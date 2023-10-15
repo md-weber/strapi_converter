@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:strapi_converter/models/strapi_attribute_models.dart';
 import 'package:strapi_converter/models/strapi_model.dart';
@@ -135,9 +136,14 @@ class StrapiConverter {
   }
 
   List<Widget> convertRichTextAttributeToWidgets({
-    required BuildContext context,
     required AttributeRichTextModel richTextModel,
+    TextTheme? theme,
+    RichTextStyleOverwrite? overwrite,
   }) {
-    return convertRichTextModelToWidgets(richTextModel: richTextModel);
+    return convertRichTextModelToWidgets(
+      richTextModel: richTextModel,
+      textTheme: theme,
+      richTextStyleOverwrite: overwrite,
+    );
   }
 }
