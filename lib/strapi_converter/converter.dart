@@ -125,7 +125,6 @@ class StrapiConverter {
     final attributeRichTextModel = result.richTextModels.first;
 
     List<Widget> resultList = convertRichTextModelToWidgets(
-      context,
       richTextModel: attributeRichTextModel,
     );
 
@@ -139,6 +138,6 @@ class StrapiConverter {
     required BuildContext context,
     required AttributeRichTextModel richTextModel,
   }) {
-    return convertRichTextModelToWidgets(context, richTextModel: richTextModel);
+    return convertRichTextModelToWidgets(richTextModel: richTextModel);
   }
 }

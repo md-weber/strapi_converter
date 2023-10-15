@@ -16,7 +16,6 @@ Widget createTestWidgets({
         builder: (context) => Column(
           key: globalKey ?? GlobalKey(),
           children: convertRichTextModelToWidgets(
-            context,
             richTextModel: richTextModel,
             richTextStyleOverwrite: richTextStyleOverwrite,
           ),
@@ -77,15 +76,7 @@ void main() {
     group("Headlines", () {
       testWidgets("should return a Text Element with a level 2 heading",
           (WidgetTester t) async {
-        GlobalKey key = GlobalKey();
-        final theme = ThemeData.dark().copyWith(
-          textTheme: ThemeData.dark().textTheme.copyWith(
-                titleMedium: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-        );
+        GlobalKey key = GlobalKey();;
 
         await t.pumpWidget(
           createTestWidgets(
@@ -104,7 +95,6 @@ void main() {
             ),
             richTextStyleOverwrite: RichTextStyleOverwrite(),
             globalKey: key,
-            theme: theme,
           ),
         );
 
@@ -114,11 +104,6 @@ void main() {
           matching: find.byType(Text),
         );
 
-        final widget = t.firstWidget<Text>(descendantFinder);
-        expect(widget.style!.fontSize, theme.textTheme.titleMedium!.fontSize);
-        expect(
-            widget.style!.fontWeight, theme.textTheme.titleMedium!.fontWeight);
-
         expect(columnFinder, findsOneWidget);
         expect(descendantFinder, findsOneWidget);
       });
@@ -126,31 +111,6 @@ void main() {
       testWidgets(
           "should return multiple Text Element with different level headings",
           (WidgetTester t) async {
-        final theme = ThemeData.dark().copyWith(
-          textTheme: ThemeData.dark().textTheme.copyWith(
-                titleMedium: const TextStyle(
-                  fontSize: 1,
-                  fontWeight: FontWeight.w100,
-                ),
-                titleLarge: const TextStyle(
-                  fontSize: 2,
-                  fontWeight: FontWeight.w200,
-                ),
-                titleSmall: const TextStyle(
-                  fontSize: 3,
-                  fontWeight: FontWeight.w300,
-                ),
-                headlineLarge: const TextStyle(
-                  fontSize: 4,
-                  fontWeight: FontWeight.w400,
-                ),
-                headlineMedium: const TextStyle(
-                  fontSize: 5,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-        );
-
         var headingOne = RichTextHeading(
           text: 'Digital Natives',
           type: 'text',
@@ -189,7 +149,6 @@ void main() {
               ],
             ),
             richTextStyleOverwrite: RichTextStyleOverwrite(),
-            theme: theme,
           ),
         );
 
@@ -198,26 +157,6 @@ void main() {
           of: columnFinder,
           matching: find.byType(Text),
         );
-
-        final textWidgets = t.widgetList<Text>(descendantFinder);
-
-        var textOne = textWidgets.elementAt(0);
-        var textTwo = textWidgets.elementAt(1);
-        var textThree = textWidgets.elementAt(2);
-        var textFour = textWidgets.elementAt(3);
-        var textFive = textWidgets.elementAt(4);
-
-        void expectTextToBe(widget, themeStyle) {
-          expect(widget.style!.fontSize, themeStyle.fontSize);
-          expect(widget.style!.fontWeight, themeStyle.fontWeight);
-        }
-
-        expectTextToBe(textOne, theme.textTheme.titleMedium);
-        expectTextToBe(textTwo, theme.textTheme.titleLarge);
-        expectTextToBe(textThree, theme.textTheme.titleSmall);
-        expectTextToBe(textFour, theme.textTheme.headlineLarge);
-        expectTextToBe(textFive, theme.textTheme.headlineMedium);
-
         expect(columnFinder, findsOneWidget);
         expect(descendantFinder, findsNWidgets(5));
       });
