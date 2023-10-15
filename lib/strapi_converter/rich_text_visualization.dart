@@ -30,7 +30,7 @@ List<Widget> convertRichTextModelToWidgets({
                   text: child.text,
                   style: child.bold
                       ? const TextStyle(fontWeight: FontWeight.bold)
-                      : const TextStyle(),
+                      : const TextStyle(fontWeight: FontWeight.normal),
                 ),
             ],
           ),
