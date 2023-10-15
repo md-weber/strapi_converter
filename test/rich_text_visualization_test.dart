@@ -35,7 +35,9 @@ void main() {
       await t.pumpWidget(
         createTestWidgets(
           richTextModel: AttributeRichTextModel(
-              name: "Test", headings: [], paragraphs: []),
+            name: "Test",
+            richTextElements: [],
+          ),
           richTextStyleOverwrite: RichTextStyleOverwrite(),
           globalKey: key,
         ),
@@ -55,7 +57,9 @@ void main() {
       await t.pumpWidget(
         createTestWidgets(
           richTextModel: AttributeRichTextModel(
-              name: "Test", headings: [], paragraphs: []),
+            name: "Test",
+            richTextElements: [],
+          ),
           richTextStyleOverwrite: RichTextStyleOverwrite(),
         ),
       );
@@ -87,14 +91,16 @@ void main() {
           createTestWidgets(
             richTextModel: AttributeRichTextModel(
               name: "Test",
-              headings: [
-                RichTextHeading(
-                  text: 'Digital Natives',
-                  type: 'text',
-                  level: 2,
+              richTextElements: [
+                (
+                  RichTextHeading(
+                    text: 'Digital Natives',
+                    type: 'text',
+                    level: 2,
+                  ),
+                  null
                 )
               ],
-              paragraphs: [],
             ),
             richTextStyleOverwrite: RichTextStyleOverwrite(),
             globalKey: key,
@@ -174,14 +180,13 @@ void main() {
           createTestWidgets(
             richTextModel: AttributeRichTextModel(
               name: "Test",
-              headings: [
-                headingOne,
-                headingTwo,
-                headingThree,
-                headingFour,
-                headingFive
+              richTextElements: [
+                (headingOne, null),
+                (headingTwo, null),
+                (headingThree, null),
+                (headingFour, null),
+                (headingFive, null)
               ],
-              paragraphs: [],
             ),
             richTextStyleOverwrite: RichTextStyleOverwrite(),
             theme: theme,
@@ -225,18 +230,20 @@ void main() {
           createTestWidgets(
             richTextModel: AttributeRichTextModel(
               name: "Test",
-              paragraphs: [
-                RichTextParagraph(
-                  type: 'paragraph',
-                  children: [
-                    RichTextParagraphChild(
-                      text: "This is a paragraph",
-                      type: "type",
-                    )
-                  ],
+              richTextElements: [
+                (
+                  null,
+                  RichTextParagraph(
+                    type: 'paragraph',
+                    children: [
+                      RichTextParagraphChild(
+                        text: "This is a paragraph",
+                        type: "type",
+                      )
+                    ],
+                  )
                 ),
               ],
-              headings: [],
             ),
             richTextStyleOverwrite: RichTextStyleOverwrite(),
           ),

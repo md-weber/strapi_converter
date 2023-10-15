@@ -53,8 +53,10 @@ class StrapiConverter {
     String name,
     List<dynamic> richText,
   ) {
-    final model =
-        AttributeRichTextModel(name: name, headings: [], paragraphs: []);
+    final model = AttributeRichTextModel(
+      name: name,
+      richTextElements: [],
+    );
 
     for (var richTextAttribute in richText) {
       final attributeType = richTextAttribute.entries
@@ -70,7 +72,7 @@ class StrapiConverter {
             attributeType,
             attributeChildren,
           );
-          model.paragraphs.add(textParagraph);
+          model.richTextElements.add((null, textParagraph));
           continue;
         case "heading":
           final attributeLevel = richTextAttribute.entries.firstWhere(
@@ -85,7 +87,7 @@ class StrapiConverter {
             type: attributeType.value,
           );
 
-          model.headings.add(heading);
+          model.richTextElements.add((heading, null));
           continue;
       }
     }

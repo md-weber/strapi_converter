@@ -33,7 +33,10 @@ void main() {
       group("should convert a paragraph", () {
         test("without styling correctly", () {
           expect(richTextModels.first.name, "Test");
-          final paragraph = richTextModels.first.paragraphs.first;
+          final (_, paragraph) =
+              richTextModels.first.richTextElements.firstWhere(
+            (e) => e.$2 != null,
+          );
           expect(paragraph!.type, "paragraph");
           expect(
             paragraph.children[0].text,
@@ -42,7 +45,9 @@ void main() {
         });
 
         test("with styling correctly", () {
-          var paragraph = richTextModels.first.paragraphs[11];
+          var (_, paragraph) = richTextModels.first.richTextElements
+              .where((element) => element.$2 != null)
+              .toList()[11];
           expect(paragraph!.type, "paragraph");
           expect(paragraph.children[0].text, "Internet Security");
           expect(paragraph.children[0].type, "text");
@@ -56,7 +61,9 @@ void main() {
       });
 
       test("should convert a heading without styling correctly", () {
-        final heading = richTextModels.first.headings.first;
+        final (heading, _) = richTextModels.first.richTextElements.firstWhere(
+          (element) => element.$1 != null,
+        );
         expect(heading!.type, "heading");
         expect(
           heading.text,

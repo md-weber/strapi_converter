@@ -2,12 +2,10 @@ abstract class AttributeModelEntry {}
 
 class AttributeRichTextModel extends AttributeModelEntry {
   final String name;
-  final List<RichTextHeading> headings;
-  final List<RichTextParagraph> paragraphs;
+  final List<(RichTextHeading?, RichTextParagraph?)> richTextElements;
 
   AttributeRichTextModel({
-    required this.headings,
-    required this.paragraphs,
+    required this.richTextElements,
     required this.name,
   });
 }

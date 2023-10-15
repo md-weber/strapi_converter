@@ -8,32 +8,34 @@ List<Widget> convertRichTextModelToWidgets(
 }) {
   List<Widget> widgets = [];
 
-  for (var heading in richTextModel.headings) {
-    widgets.add(Text(heading.text, style: _getStyle(context, heading.level)));
-  }
+  for (var (heading, paragraph) in richTextModel.richTextElements) {
+    if (heading == null && paragraph == null) continue;
+    if (heading != null) {
+      widgets.add(Text(heading.text, style: _getStyle(context, heading.level)));
+    }
+    if (paragraph != null) {
+      final firstChild = paragraph.children.removeAt(0);
 
-  for (var paragraph in richTextModel.paragraphs) {
-    final firstChild = paragraph.children.removeAt(0);
-
-    widgets.add(
-      RichText(
-        text: TextSpan(
-          text: firstChild.text,
-          style: firstChild.bold
-              ? const TextStyle(fontWeight: FontWeight.bold)
-              : const TextStyle(),
-          children: [
-            for (var child in paragraph.children)
-              TextSpan(
-                text: child.text,
-                style: child.bold
-                    ? const TextStyle(fontWeight: FontWeight.bold)
-                    : const TextStyle(),
-              ),
-          ],
+      widgets.add(
+        RichText(
+          text: TextSpan(
+            text: firstChild.text,
+            style: firstChild.bold
+                ? const TextStyle(fontWeight: FontWeight.bold)
+                : const TextStyle(),
+            children: [
+              for (var child in paragraph.children)
+                TextSpan(
+                  text: child.text,
+                  style: child.bold
+                      ? const TextStyle(fontWeight: FontWeight.bold)
+                      : const TextStyle(),
+                ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   return widgets;
