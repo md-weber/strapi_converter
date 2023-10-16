@@ -13,9 +13,14 @@ List<Widget> convertRichTextModelToWidgets({
     if (heading == null && paragraph == null) continue;
     if (heading != null) {
       widgets.add(
-        Text(
-          heading.text,
-          style: _getStyle(heading.level, textTheme),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: richTextStyleOverwrite.spacing.none,
+          ),
+          child: Text(
+            heading.text,
+            style: _getStyle(heading.level, textTheme),
+          ),
         ),
       );
     }
@@ -80,6 +85,7 @@ class RichTextStyleOverwrite {
 
 class Spacing {
   const Spacing({
+    this.none = 0.0,
     this.xs = 4.0,
     this.s = 8.0,
     this.m = 12.0,
@@ -87,6 +93,7 @@ class Spacing {
     this.xl = 20.0,
   });
 
+  final double none;
   final double xs;
   final double s;
 

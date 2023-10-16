@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:strapi_converter/models/strapi_attribute_models.dart';
 import 'package:strapi_converter/models/strapi_model.dart';
 import 'package:strapi_converter/models/strapi_result_with_widgets.dart';
@@ -120,7 +119,7 @@ class StrapiConverter {
     return paragraph;
   }
 
-  StrapiResultWithWidget convertFromJsonToWidgets(context, JSON json) {
+  StrapiResultWithWidget convertFromJsonToWidgets(JSON json) {
     final result = StrapiConverter().convertFromJson(json);
 
     final attributeRichTextModel = result.richTextModels.first;
