@@ -140,10 +140,17 @@ class StrapiConverter {
     TextTheme? theme,
     RichTextStyleOverwrite? overwrite,
   }) {
-    return convertRichTextModelToWidgets(
-      richTextModel: richTextModel,
-      textTheme: theme,
-      richTextStyleOverwrite: overwrite,
-    );
+    if (overwrite != null) {
+      return convertRichTextModelToWidgets(
+        richTextModel: richTextModel,
+        textTheme: theme,
+        richTextStyleOverwrite: overwrite,
+      );
+    } else {
+      return convertRichTextModelToWidgets(
+        richTextModel: richTextModel,
+        textTheme: theme,
+      );
+    }
   }
 }

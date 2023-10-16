@@ -37,7 +37,7 @@ void main() {
             name: "Test",
             richTextElements: [],
           ),
-          richTextStyleOverwrite: RichTextStyleOverwrite(),
+          richTextStyleOverwrite: const RichTextStyleOverwrite(),
           globalKey: key,
         ),
       );
@@ -59,7 +59,7 @@ void main() {
             name: "Test",
             richTextElements: [],
           ),
-          richTextStyleOverwrite: RichTextStyleOverwrite(),
+          richTextStyleOverwrite: const RichTextStyleOverwrite(),
         ),
       );
 
@@ -76,7 +76,7 @@ void main() {
     group("Headlines", () {
       testWidgets("should return a Text Element with a level 2 heading",
           (WidgetTester t) async {
-        GlobalKey key = GlobalKey();;
+        GlobalKey key = GlobalKey();
 
         await t.pumpWidget(
           createTestWidgets(
@@ -93,7 +93,7 @@ void main() {
                 )
               ],
             ),
-            richTextStyleOverwrite: RichTextStyleOverwrite(),
+            richTextStyleOverwrite: const RichTextStyleOverwrite(),
             globalKey: key,
           ),
         );
@@ -148,7 +148,7 @@ void main() {
                 (headingFive, null)
               ],
             ),
-            richTextStyleOverwrite: RichTextStyleOverwrite(),
+            richTextStyleOverwrite: const RichTextStyleOverwrite(),
           ),
         );
 
@@ -184,7 +184,7 @@ void main() {
                 ),
               ],
             ),
-            richTextStyleOverwrite: RichTextStyleOverwrite(),
+            richTextStyleOverwrite: const RichTextStyleOverwrite(),
           ),
         );
 
