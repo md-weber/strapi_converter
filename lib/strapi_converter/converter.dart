@@ -17,6 +17,7 @@ class StrapiConverter {
       stringModels: [],
       childModels: [],
       unknownModels: [],
+      id: model.data.id,
     );
 
     for (var attribute in model.data.attributes.entries) {
@@ -158,7 +159,5 @@ class StrapiConverter {
     }
   }
 
-  void get(String s, AttributeModelEntry attributeModel) {
-
-  }
+  void get(String s, AttributeModelEntry attributeModel) {}
 }

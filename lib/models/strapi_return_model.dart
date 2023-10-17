@@ -1,6 +1,7 @@
 import 'package:strapi_converter/models/strapi_attribute_models.dart';
 
 class StrapiReturnModel {
+  int id;
   List<AttributeRichTextModel> richTextModels;
   List<AttributeDateTimeModel?> dateTimeModels;
   List<AttributeStringModel?> stringModels;
@@ -8,6 +9,7 @@ class StrapiReturnModel {
   List<AttributeUnknownModel> unknownModels;
 
   StrapiReturnModel({
+    required this.id,
     required this.richTextModels,
     required this.dateTimeModels,
     required this.stringModels,

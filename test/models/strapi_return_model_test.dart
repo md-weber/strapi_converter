@@ -11,7 +11,8 @@ void main() {
             dateTimeModels: [],
             stringModels: [],
             childModels: [],
-            unknownModels: []);
+            unknownModels: [],
+            id: 1);
 
         expect(
           () => strapiReturnModel.getString("name"),
@@ -26,7 +27,8 @@ void main() {
               AttributeStringModel(name: "name", entry: "Jon Doe")
             ],
             childModels: [],
-            unknownModels: []);
+            unknownModels: [],
+            id: 1);
 
         String result = strapiReturnModel.getString("name");
         expect(result, "Jon Doe");
@@ -45,9 +47,11 @@ void main() {
               ],
               childModels: [],
               unknownModels: [],
+              id: 1,
             )
           ],
           unknownModels: [],
+          id: 1,
         );
 
         String result = strapiReturnModel.getString("name");
@@ -73,12 +77,15 @@ void main() {
                   ],
                   childModels: [],
                   unknownModels: [],
+                  id: 1,
                 )
               ],
               unknownModels: [],
+              id: 1,
             )
           ],
           unknownModels: [],
+          id: 1,
         );
 
         String result = strapiReturnModel.getString("name");
@@ -93,7 +100,8 @@ void main() {
             dateTimeModels: [],
             stringModels: [],
             childModels: [],
-            unknownModels: []);
+            unknownModels: [],
+            id: 1);
 
         expect(
           () => strapiReturnModel.getDateTime("name"),
@@ -112,6 +120,7 @@ void main() {
           stringModels: [],
           childModels: [],
           unknownModels: [],
+          id: 1,
         );
 
         DateTime result = strapiReturnModel.getDateTime("published");
@@ -134,9 +143,11 @@ void main() {
               stringModels: [],
               childModels: [],
               unknownModels: [],
+              id: 1,
             )
           ],
           unknownModels: [],
+          id: 1,
         );
 
         DateTime result = strapiReturnModel.getDateTime("published");
@@ -165,12 +176,15 @@ void main() {
                   stringModels: [],
                   childModels: [],
                   unknownModels: [],
+                  id: 1,
                 )
               ],
               unknownModels: [],
+              id: 1,
             )
           ],
           unknownModels: [],
+          id: 1,
         );
 
         DateTime result = strapiReturnModel.getDateTime("published");
