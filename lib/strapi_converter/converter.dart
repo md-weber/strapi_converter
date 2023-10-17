@@ -15,6 +15,7 @@ class StrapiConverter {
       richTextModels: [],
       dateTimeModels: [],
       stringModels: [],
+      childModels: [],
       unknownModels: [],
     );
 
@@ -39,6 +40,10 @@ class StrapiConverter {
           _convertRichText(attribute.key, attribute.value),
         );
         continue;
+      }
+
+      if (attribute.value is Map<String, dynamic>) {
+        returnModel.childModels.add(convertFromJson(attribute.value));
       }
 
       returnModel.unknownModels.add(

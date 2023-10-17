@@ -29,6 +29,23 @@ void main() {
       expect(result.richTextModels.length, 1);
     });
 
+    test(
+        "WHEN a subchild is propagated, it should be delivered as a childModel",
+        () {
+      var result = StrapiConverter().convertFromJson(
+        jsonDecode(testJsonWithChild),
+      );
+
+      expect(result, isA<StrapiReturnModel>());
+
+      expect(result.childModels.length, 1);
+
+      expect(result.childModels[0].stringModels.length, 2);
+      expect(result.childModels[0].dateTimeModels.length, 3);
+
+      expect(result.richTextModels.length, 1);
+    });
+
     group("RichTextConverter", () {
       group("should convert a paragraph", () {
         test("without styling correctly", () {

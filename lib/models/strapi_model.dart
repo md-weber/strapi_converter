@@ -9,7 +9,7 @@ part 'strapi_model.g.dart';
 class StrapiModel with _$StrapiModel {
   const factory StrapiModel({
     required DataModel data,
-    required Map<String, dynamic> meta,
+    Map<String, dynamic>? meta,
   }) = _StrapiModel;
 
   factory StrapiModel.fromJson(Map<String, Object?> json) =>
