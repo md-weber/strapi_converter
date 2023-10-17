@@ -157,4 +157,8 @@ class StrapiConverter {
       );
     }
   }
+
+  void get(String s, AttributeModelEntry attributeModel) {
+
+  }
 }
